@@ -192,6 +192,79 @@ h1,h2,h3,h4 { font-family: var(--display); color: var(--ink); line-height: 1.2; 
 }
 .hero__scroll span { width: 4px; height: 9px; border-radius: 4px; background: #fff; animation: wheel 1.6s ease-in-out infinite; }
 
+/* ---------- Hero Monogram (no photo) ---------- */
+.hero__monogram {
+  position: relative;
+  width: min(360px, 78vw);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+.hero__monogram-letter {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(9rem, 22vw, 15rem);
+  line-height: 1;
+  background: linear-gradient(135deg, #fff, #a5b4fc 40%, #67e8f9 70%, #fbbf24);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  z-index: 2;
+  animation: floaty 5.5s ease-in-out infinite;
+  filter: drop-shadow(0 12px 40px rgba(79, 70, 229, .45));
+}
+.hero__monogram-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.18);
+  animation: spin 14s linear infinite;
+}
+.hero__monogram-ring::before {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  border: 2px dashed rgba(99, 102, 241, .45);
+  animation: spin 22s linear infinite reverse;
+}
+.hero__monogram-glow {
+  position: absolute;
+  inset: -40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(79,70,229,.45) 0%, rgba(6,182,212,.25) 40%, transparent 70%);
+  filter: blur(30px);
+  animation: pulseGlow 4s ease-in-out infinite;
+  z-index: 1;
+}
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); opacity: .7; }
+  50% { transform: scale(1.12); opacity: 1; }
+}
+.hero__badge {
+  position: absolute;
+  bottom: 6%; left: 50%; transform: translateX(-50%);
+  background: rgba(255,255,255,.95); color: var(--ink); font-size: .8rem; font-weight: 700;
+  padding: .5rem 1.1rem; border-radius: 999px; box-shadow: 0 12px 30px rgba(0,0,0,.25);
+  white-space: nowrap; animation: floaty 4.5s ease-in-out infinite .7s;
+  z-index: 3;
+}
+
+/* ---------- Profile Card Monogram ---------- */
+.card__monogram {
+  width: 120px; height: 120px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255,255,255,.25), rgba(255,255,255,.08));
+  border: 4px solid rgba(255,255,255,.6);
+  display: grid; place-items: center;
+  font-family: var(--display); font-weight: 900; font-size: 3rem;
+  color: #fff;
+  position: relative;
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+}
+
 /* ---------- Trust Bar ---------- */
 .trustbar { background: #0f172a; color: #cbd5e1; overflow: hidden; position: relative; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); }
 .trustbar__track { display: flex; gap: 1.6rem; width: max-content; animation: slide 24s linear infinite; font-weight: 600; letter-spacing: .06em; font-size: .85rem; text-transform: uppercase; }
